@@ -22,21 +22,14 @@ function randomColorsStart() {
     timerId = setInterval(() => {
         document.body.style.background = colors[randomIntegerFromInterval(0, 5)]
     }, 1000);
-    console.log("Start");
-    refs.btnStart.setAttribute("disabled", "");
-    if (refs.btnStop.hasAttribute("disabled")) {
-        refs.btnStop.removeAttribute("disabled");
-    };
-
+    refs.btnStart.disabled = true;
+    refs.btnStop.disabled = false;
     refs.btnStop.removeEventListener("click", randomColorsStart)
 };
 
 function randomColorsStop() {
     clearInterval(timerId);
-    console.log("Stop")
-    refs.btnStop.setAttribute("disabled", "");
-    if (refs.btnStart.hasAttribute("disabled")) {
-        refs.btnStart.removeAttribute("disabled");
-    };
+    refs.btnStart.disabled = false;
+    refs.btnStop.disabled = true;
     refs.btnStart.removeEventListener("click", randomColorsStop)
 }
